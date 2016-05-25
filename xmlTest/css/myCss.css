@@ -1,0 +1,42 @@
+#contents {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    float: left;
+    display: inline;
+}
+
+#selectAbil {
+    width : 40%;
+    float: left;
+    display: block;
+}
+
+#selectJobFam {
+    width : 40%;
+    float: left;
+    display: block;
+}
+
+.selector {
+    width: 400px;
+    display: inline;
+    float: left;
+    margin: 0 30px 0 0;
+}
+
+.selector #pgubn {
+    width : 180px;
+}
+
+.selector #profession {
+    width : 370px;
+}
+
+label {
+    display: block;
+}
+
+.select {
+    width: 100px;
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>xmlTest</title>
+
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <link rel="stylesheet" href="css/myCss.css">
+
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script type="text/javascript" src="xml2json.js"></script>
+    <script type="text/javascript" src="jquery.xdomainajax.js"></script>
+    <script type="text/javascript" src="js/d3/d3.v3.js"></script>
+    <script src='js/01.js'></script>
+</head>
+<body>
+<form>
+    <fieldset>
+        <legend>Find my future Project</legend>
+        <div id="contents">
+            <div id="selectAbil">
+                <div class="selector">
+                    <label for="pgubn">Select your ability</label>
+                    <select name="pgubn" id="pgubn">
+                        <option>전체</option>
+                        <option>신체운동능력</option>
+                        <option>손재능</option>
+                        <option>공간지각능력</option>
+                        <option>음악능력</option>
+                        <option>창의력</option>
+                        <option>언어능력</option>
+                    </select>
+                </div>
+                <button name="select" class="select" id="btnAbil">다음</button>
+            </div>
+            <div id="selectJobFam">
+                <div class="selector">
+                    <label for="profession">Select job jamilies you want</label>
+                    <select name="profession" id="profession">
+                    </select>
+                </div>
+                <button name="select" class="select" id="btnJobFam">결과</button>
+            </div>
+        </div>
+    </fieldset>
+</form>
+    <div id='box01' style="...">
+    </div>
+    <div id="box02" style="...">
+    </div>
+</body>
+</html>

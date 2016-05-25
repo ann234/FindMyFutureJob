@@ -21,7 +21,7 @@ var _error;
 
 var xml, xmlDoc;
 
-job_families = new Set();
+job_families_set = new Set();
 
 // select menu's item's dictionary
 var pgubnDic = {
@@ -58,9 +58,16 @@ function response_parse(data) {
     var totalCount = $xml.find("totalCount").text();
     //$("#box01").text(totalCount);
 
+    //reset job_familes set
+    job_families_set.clear();
+
     $xml.find("content").each(function (i, it) {
         box2html += "직업 : " + $(it).find("job").text() + "</br>";
-        box2html += "직업 분야 : " + $(it).find("profession").text() + "</br>";
+        var _profession = $(it).find("profession").text();
+        if(_profession != null) {
+            job_families_set.add(_profession);
+            box2html += "직업 분야 : " + _profession + "</br>";
+        }
         box2html += "연봉 : " + $(it).find("salery").text() + "</br>";
         var _prospect = $(it).find("prospect").text();
         if (_prospect != "null") {
@@ -70,7 +77,44 @@ function response_parse(data) {
         box2html += "비슷한 직업 : " + $(it).find("similarJob").text() + "</br></br>";
     });
 
+    $("#profession").find('option').remove().end();
+    $("#profession").selectmenu('destroy').selectmenu({style:'dropdown'});
+    //add profession to profession selectmenu
+    job_families_set.forEach(function(item) {
+        d3.select("#profession").append("option").text(item);
+    });
+
     $("#box02").html(box2html);
+}
+
+var getProfession = function() {
+    var $xml = $(xml);
+
+    var box2html = "";
+
+    var getProfession = $("#profession").val();
+    $xml.find("content").each(function (i, it) {
+        var _profession = $(it).find("profession").text();
+        if(_profession == getProfession) {
+            box2html += "직업 : " + $(it).find("job").text() + "</br>";
+            var _profession = $(it).find("profession").text();
+            if(_profession != null) {
+                job_families_set.add(_profession);
+                box2html += "직업 분야 : " + _profession + "</br>";
+            }
+            box2html += "연봉 : " + $(it).find("salery").text() + "</br>";
+            var _prospect = $(it).find("prospect").text();
+            if (_prospect != "null") {
+                box2html += "일자리전망 : " + _prospect + "</br>";
+            }
+            box2html += "직업 설명 : " + "</br>" + $(it).find("summary").text() + "</br>";
+            box2html += "비슷한 직업 : " + $(it).find("similarJob").text() + "</br></br>";
+        }
+    });
+
+    $("#box02").html(box2html);
+
+    return false;
 }
 
 var download = function () {
@@ -106,15 +150,14 @@ var download = function () {
     return false;
 }
 
-function changePgubn(event, ui) {
-
-}
-
 $(function () {
     $("#pgubn").selectmenu();
+    $("#profession").selectmenu();
     $("#category").selectmenu();
-    $("#select").button()
+    $("#btnAbil").button()
         .click(download);
+    $("#btnJobFam").button()
+        .click(getProfession);
 });
 
 /*
