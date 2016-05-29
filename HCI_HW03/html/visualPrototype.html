@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    <meta charset = "UTF-8">
+    <!--css and javascript-->
+    <link rel="stylesheet" href="../css/jquery-ui.css">
+    <!--for font-->
+    <link rel="stylesheet" href="../css/myCss.css">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/earlyaccess/hanna.css">
+
+    <script src="../js/jquery.js"></script>
+    <script src="../js/jquery-ui.js"></script>
+
+    <script src="../js/myjs01.js"></script>
+
+    <!--title-->
+    <title>Find my future job</title>
+</head>
+<body>
+<!--Choose ability-->
+<div class="header">
+    <label><h3><strong>Find my future job</strong></h3></label>
+    <label><h2><strong>Choose your ability</strong></h2></label>
+</div>
+
+<div class="contents">
+    <div class="accordion" id="accordion_abil">
+        <h3>신체운동능력</h3>
+        <div>
+            <label><div class="explanation">적성에 대한 설명이 들어갈 예정입니다.</div></label>
+            <input type="checkbox" class="abil" value="100019">check
+        </div>
+        <h3>손재능</h3>
+        <div>
+            <input type="checkbox" class="abil" value="100020">check
+        </div>
+        <h3>공간지각능력</h3>
+        <div>
+            <input type="checkbox" class="abil" value="100021">check
+        </div>
+        <h3>음악능력</h3>
+        <div>
+            <input type="checkbox" class="abil" value="100022">check
+        </div>
+        <h3>창의력</h3>
+        <div>
+            <input type="checkbox" class="abil" value="100023">check
+        </div>
+        <h3>언어능력</h3>
+        <div>
+            <input type="checkbox" class="abil" value="100024">check
+        </div>
+        <h3>수리논리력</h3>
+        <div>
+            <input type="checkbox" class="abil" value="100025">check
+        </div>
+        <h3>자기성찰능력</h3>
+        <div>
+            <input type="checkbox" class="abil" value="100026">check
+        </div>
+        <h3>대인능력</h3>
+        <div>
+            <input type="checkbox" class="abil" value="100027">check
+        </div>
+        <h3>자연친화력</h3>
+        <div>
+            <input type="checkbox" class="abil" value="100028">check
+        </div>
+    </div>
+    <p><div class="p_remark">커리어넷 적성유형.</div></p>
+    <!--select all ability-->
+    <button name="selectAll" id="selectAll">Select all</button>
+    <!--goto next level-->
+    <button name="nextBtn_abil" class="nextBtn" id="nextBtn_abil">Next</button>
+</div>
+</br></br></br></br></br></br></br></br>
+
+<!--Choose job families-->
+<div class="header">
+    <label><h3><strong>Find my future job</strong></h3></label>
+    <label><h2><strong>Choose what you want to do</strong></h2></label>
+</div>
+
+<div class="contents">
+    <label><div class="explanation">앞에서 선택한 적성에 따라 선택할 수 있는 직업유형이 달라집니다..</div></label>
+    <div class="accordion">
+        <!--checkedboxs will be added after choose abilities-->
+        <h3>법률·경찰·소방·교도 관련직</h3>
+        <div>
+            <label><div class="explanation">직업유형에 대한 설명이 들어갈 예정입니다.</div></label>
+            <input type="checkbox">check
+        </div>
+        <h3>경비 및 청소 관련직</h3>
+        <div>
+            <input type="checkbox">check
+        </div>
+        <h3>문화·예술·디자인·방송 관련직</h3>
+        <div>
+            <input type="checkbox">check
+        </div>
+    </div>
+    <!--check all checkbox-->
+    <p><div class="p_remark">한국표준직업분류(KSCO) 기준.</div></p>
+    <button name="selectAllChk" id="selectAllChk">Select all</button>
+    <!--goto next level-->
+    <button name="nextBtn_job" class="nextBtn" id="nextBtn_job">Next</button>
+</div>
+</br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
+
+<!--Result-->
+<div class="header">
+    <label><h3><strong>Result</strong></h3></label>
+</div>
+<div class="contents">
+    <div id="graphs">
+        <!--equal employment-->
+        <div class="graph">
+            <img src="../image\equal.PNG" style="max-width: 280px; height: auto;">
+            <figcaption>
+                고용평등률
+            </figcaption>
+        </div>
+        <!--salery-->
+        <div class="graph">
+            <img src="../image\salery.PNG" style="max-width: 280px; height: auto;">
+            <figcaption>
+                평균연봉
+            </figcaption>
+        </div>
+        <!--prospection-->
+        <div class="graph">
+            <img src="../image\prospection.PNG" style="max-width: 280px; height: auto;">
+            <figcaption>
+                직업전망을 시각적으로 디자인해 보여줄 예정입니다.
+            </figcaption>
+        </div>
+    </div>
+    </br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
+    <p><div class="normal_hanna">총 직업 : totalCount.</div></p>
+    <div id="jobs">
+        <div class="accordion">
+            <!--checkedboxs will be added after choose abilities-->
+            <h3>비행기 조종사</h3>
+            <div>
+                <p>직업 분야 : 운전 및 운송 관련직</p>
+                    연봉 : 4000 만원 이상
+                    일자리전망 : 보통이상
+                    직업 설명 :
+                    - 비행기조종사는 승객이나 화물을 운반하기 위해 여객기, 전투기, 경비행기, 헬리콥터 등을 조종한다. - 비행스케줄에 따라 항로, 목적지, 연료량. 기상 조건 등을 숙지하고 항공기 상태, 조종실 시스템 등을 점검한다. - 비행하는 동안 비행기의 장으로 항공승무원의 활동을 지휘하며 운항일지를 기록하고 비행 중 발생한 각종 설비상의 문제나 이상현상을 보고한다. - 탐색, 구조, 항공측량작업을 하며 소독약의 분무, 농약살포와 같은 일을 하기도 한다. - 비행기 성능을 평가하기 위해 새로운 비행기를 테스트한다.
+                    비슷한 직업 : 항공기조종사,검열조종사,기장,부조종사,시험조종사</p>
+                <label><div class="explanation">직업 정보를 더 시각적으로 보여주고 다른 직업과의 비교도 가능하도록 할 예정입니다.</div></label>
+            </div>
+            <h3>선장 및 항해사</h3>
+            <div>
+            </div>
+            <h3>대형트럭 및 특수차운전원</h3>
+            <div>
+            </div>
+        </div>
+    </div>
+    <button name="page1" id="page1" class="pageButton">1</button>
+    <button name="page2" id="page2" class="pageButton">2</button>
+    <label><div class="explanation">페이지당 20개의 직업을 보여줄 수 있을것입니다..</div></label>
+</div>
+</br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
+<div id="showResult"></div>
+</body>
+</html>

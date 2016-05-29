@@ -1,0 +1,94 @@
+@import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
+
+.header {
+    text-align: center;
+}
+
+h3 strong {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+h2 strong {
+    font-size: 30px;
+}
+
+.normal_hanna {
+    margin-left: 10px; margin-bottom: 10px;
+    font-size: 22px;
+    font-family: 'Hanna', serif;
+    text-align: left;
+}
+
+.p_remark {
+    margin-left: 10px; margin-bottom: 10px;
+    font-size: 18px;
+    font-family: 'Hanna', serif;
+    text-align: left;
+}
+
+.contents {
+    width: 90%;
+    margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+
+    display: block;
+   /* margin: 0 200px 0 200px*/
+}
+
+.accordion {
+    margin: 10px 0 10px 0
+}
+
+.explanation {
+    margin-left: 10px; margin-bottom: 10px;
+    font-size: 20px;
+    font-family: 'Hanna', serif;
+    text-align: left;
+
+    color: red;
+}
+
+figcaption {
+    margin-left: 10px; margin-bottom: 10px;
+    font-size: 14px;
+    font-family: 'Jeju Gothic', serif;
+    text-align: left;
+}
+
+#graphs {
+    margin: 10px 10px 10px 10px;
+}
+
+.graph {
+    margin: 0 10px 0 10px;
+    display: inline;
+    float: left;
+}
+
+fieldset {
+
+}
+
+.nextBtn {
+    float: right;
+}
+
+#checkboxs {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.chkbox {
+    margin: 10px 20px 10px 20px;
+    width: 150px;
+}
+
+#selectAllChk {
+}
+
+@media screen and (max-width:1060px) {
+
+}
