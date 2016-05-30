@@ -49,9 +49,6 @@ function response_parse(data) {
 
     var $xml = $(xml);
 
-    //reset job_familes set
-    job_families_set.clear();
-
     $xml.find("content").each(function (i, it) {
         var _profession = $(it).find("profession").text();
         if(_profession != null) {
@@ -59,40 +56,45 @@ function response_parse(data) {
         }
     });
 
-    //remove prior profession list
-    $("#profession").find('option').remove().end();
-    $("#profession").selectmenu('destroy').selectmenu({style:'dropdown'});
-    //add profession to profession selectmenu
+    var box = "";
+    var newDiv = ""
     job_families_set.forEach(function(item) {
-        d3.select("#profession").append("option").text(item);
+        newDiv += "<h3>" + item + "</h3><div>내용</div>";
+        box += item + "</br>";
     });
+    $("#showResult02").html(box);
+    $("#accordion_jobFam").find('h3').remove().end();
+    $("#accordion_jobFam").find('div').remove().end();
+    $("#accordion_jobFam").accordion("refresh");
+    $("#accordion_jobFam").append(newDiv);
+    $("#accordion_jobFam").accordion("refresh");
 }
 
 var download = function() {
     var size = $(".accordion :checked").size();
     var html = "number of checked : ";
-    html += size;
+    html += size + "</br>";
 
     var params = "</br>";
     pgubn_array.splice(0, pgubn_array.length);
     $("#accordion_abil :checked").each(function(i, item) {
         var val = $(this).parent().children(".abil").val();
         pgubn_array.push(val)
-        params += val + '</br>';
+        html += val + '</br>';
     });
-    html += params;
+    $("#showResult01").html(html);
 
-    $("#showResult").html(html);
+    //reset job_familes set
+    job_families_set.clear();
 
-    pgubn_array.forEach(function(item, i) {
+    pgubn_array.forEach(function(item) {
         var queryParams = (authentication_key);
         queryParams += '&' + ('svcType') + '=' + ('api');
         queryParams += '&' + ('svcCode') + '=' + ('JOB');
         queryParams += '&' + ('contentType') + '=' + ('xml');
         queryParams += '&' + ('gubun') + '=' + ('job_apti_list');
-        var _pgubn = item;
-        if(_pgubn != "전체") {
-            queryParams += '&' + ('pgubn') + '=' + pgubnDic[_pgubn];
+        if(item != "") {
+            queryParams += '&' + ('pgubn') + '=' + item;
         }
         queryParams += '&' + ('perPage=') + '454'
 
@@ -100,8 +102,7 @@ var download = function() {
             type    :   "GET",
             url     :   end_point_url + queryParams,
             dataType    :   "XML",
-            cache	 : false,
-            async   :   true,
+            async   : false,
             success :   response_parse,
             error:function(request,status,error){
                 _error = error;
@@ -109,8 +110,6 @@ var download = function() {
             }
         });
     });
-
-    alert("success");
 
     //새로고침 방지
     return false;

@@ -10,6 +10,8 @@
 
     <script src="../js/jquery.js"></script>
     <script src="../js/jquery-ui.js"></script>
+    <script type="text/javascript" src="../js/xml2json.js"></script>
+    <script type="text/javascript" src="../js/jquery.xdomainajax.js"></script>
 
     <script src="../js/myjs01.js"></script>
 
@@ -83,21 +85,7 @@
 
 <div class="contents">
     <label><div class="explanation">앞에서 선택한 적성에 따라 선택할 수 있는 직업유형이 달라집니다..</div></label>
-    <div class="accordion">
-        <!--checkedboxs will be added after choose abilities-->
-        <h3>법률·경찰·소방·교도 관련직</h3>
-        <div>
-            <label><div class="explanation">직업유형에 대한 설명이 들어갈 예정입니다.</div></label>
-            <input type="checkbox">check
-        </div>
-        <h3>경비 및 청소 관련직</h3>
-        <div>
-            <input type="checkbox">check
-        </div>
-        <h3>문화·예술·디자인·방송 관련직</h3>
-        <div>
-            <input type="checkbox">check
-        </div>
+    <div class="accordion" id="accordion_jobFam">
     </div>
     <!--check all checkbox-->
     <p><div class="p_remark">한국표준직업분류(KSCO) 기준.</div></p>
@@ -163,6 +151,7 @@
     <label><div class="explanation">페이지당 20개의 직업을 보여줄 수 있을것입니다..</div></label>
 </div>
 </br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
-<div id="showResult"></div>
+<div id="showResult01"></div>
+<div id="showResult02"></div>
 </body>
 </html>

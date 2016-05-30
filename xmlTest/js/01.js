@@ -127,6 +127,7 @@ var download = function () {
     if(_pgubn != "전체") {
         queryParams += '&' + ('pgubn') + '=' + pgubnDic[_pgubn];
     }
+    queryParams += '&perPage=454';
     /*var _category = $("#category").val();
     if(_category != "전체") {
         queryParams += '&' + ('category') + '=' + categoryDic[_category];
