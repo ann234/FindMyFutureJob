@@ -1,0 +1,239 @@
+@import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
+@import url(http://fonts.googleapis.com/earlyaccess/nanummyeongjo.css);
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+
+.container {
+    width: 100%;
+    height: 100%;
+    margin-top: 70px;
+    background-color:#fff;
+}
+
+.header {
+    top:0%;
+    width:100%;
+    height:120px;
+    padding-top: 10px;
+    border:1px solid #E7E7E7
+}
+
+.contents {
+    float:left;
+    top:0%;
+    width:80%;
+    height:80%;
+    border:1px solid #E7E7E7
+}
+
+.contents article {
+    margin: 20px 10px;
+    padding: 10px 10px;
+
+    border-radius: 10px;
+
+    border:1px solid #E7E7E7
+}
+
+.contents header {
+    height: 30px;
+}
+
+.contents section {
+    margin-left: 30px;
+    margin-right: 30px;
+    <!--background-color:#D8D8D8;-->
+}
+
+.introduction {
+    list-style-position: outside;
+}
+
+.mainSubject li {
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+aside {
+    float:left;
+    width:19%;
+    height:80%;
+    border:1px solid #E7E7E7;
+    text-align:center;
+}
+
+figcaption {
+    margin-left: 10px; margin-bottom: 10px;
+    font-size: 18px;
+    font-family: 'Jeju Gothic', serif;
+    text-align: left;
+}
+
+img {
+    width: 750px; height: auto;
+    padding: 5px;
+    margin-bottom: 5px;
+    border: 2px solid lightgreen;
+    border-radius: 10px;
+}
+
+input {
+    margin-left: 25px;
+}
+
+footer {
+    clear:both;
+    top:0%;
+    width:100%;
+    height:10%;
+    border:1px solid #E7E7E7;
+    text-align:center;
+}
+
+#info {
+    text-align:center;
+}
+
+.link{
+    float:left;
+    background:skyblue;
+    width:100%;
+    height:80px;
+}
+
+#hwLink {
+    height:80px;
+    margin-top: -70px;
+}
+
+#contentsLink {
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+}
+
+.link ul{
+    list-style: none;
+}
+
+#hwLink ul li {
+    display:inline;
+    float:left;
+    font-size:15px;
+    width: 25%;
+}
+
+#contentsLink ul li {
+    display:inline;
+    float:left;
+    font-size:20px;
+    width: 33%;
+}
+
+.link a, .link a:visited {
+    padding: 10px;
+    padding-left: 50px;
+    display: block;
+    color:#fff;             /* 글자색 흰색 */
+    width: 150px;           /* 너비 150px */
+    text-decoration: none;  /* 밑줄 없음 */
+}
+
+.link a:hover,  .link a:focus {
+    text-shadow:0px 2px 2px #000;   /* 글자에 검은색 그림자 */
+    color:#FC0;   /* 글자가 노랑 계열로 */
+}
+
+h1 {
+    font-family: 'Jeju Gothic', serif;
+    font-size: 30px;
+    font-weight: bold;
+    color: black;
+}
+
+h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+}
+
+ul li {
+    font-family: 'Nanum Myeongjo', serif;
+    font-size: 20px;
+    font-weight: normal;
+    color: black;
+}
+
+p
+{
+    font-family: 'Nanum Myeongjo', serif;
+    font-size: 20px;
+    font-weight: normal;
+    color: black;
+}
+
+a {
+    font-family: 'Hanna', sans-serif;
+}
+
+ol h2 {
+    margin-top: 40px;
+}
+
+#canvas {
+    width: 100%; height: auto;
+    margin: 20px 20px;
+    background-color: white;
+    -webkit-box-shadow: 4px 4px 8px rgba(0,0,0,0.5);
+    -moz-box-shadow: 4px 4px 8px rgba(0,0,0,0.5);
+    box-shadow: 4px 4px 8px rgba(0,0,0,0.5);
+}
+
+@media screen and (max-width:1060px) {
+    .header {
+        top:0%;
+        width:1060px;
+        height:120px;
+        border:1px solid #E7E7E7
+    }
+    aside{
+        float:left;
+        width:1060px;
+        height:auto;
+        border:1px solid #E7E7E7;
+        text-align:center;
+    }
+
+    aside img {
+        float: left;
+        width: 30%; height: auto;
+    }
+
+    footer {
+        width:1060px;
+    }
+
+    .link{
+        float:left;
+        background:skyblue;
+        width:1060px;
+        height:80px;
+    }
+
+    #hwLink {
+        height:80px;
+        margin-top: -70px;
+    }
+
+    #contentsLink {
+        position: fixed;
+        left: 0px;
+        bottom: 0px;
+    }
+
+    .contents{
+        float:left;
+        width:1060px;
+        height:80%;
+    }
+}

@@ -46,13 +46,11 @@ h2 strong {
     font-size: 20px;
     font-family: 'Hanna', serif;
     text-align: left;
-
-    color: red;
 }
 
 figcaption {
     margin-left: 10px; margin-bottom: 10px;
-    font-size: 14px;
+    font-size: 18px;
     font-family: 'Jeju Gothic', serif;
     text-align: left;
 }
@@ -72,7 +70,7 @@ fieldset {
 }
 
 .nextBtn {
-    float: right;
+    float: left;
 }
 
 #checkboxs {
