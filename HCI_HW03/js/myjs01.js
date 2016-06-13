@@ -2,79 +2,6 @@
  * Created by cuvit on 2016-05-10.
  */
 
-//get xml list
-var end_point_url =
-    "https://www.career.go.kr/cnet/openapi/getOpenApi.xml?apiKey=";
-
-var authentication_key =
-    "965557ae6f6cdce16015471a76ae6991";
-var xml;
-
-//restore current job_families list
-var xml_array = [];
-job_families_set = new Set();
-
-//for job sorting
-var salery2num = {
-    "2000 만원 미만" : 0,
-    "2000 만원 이상" : 1,
-    "3000 만원 이상" : 2,
-    "4000 만원 이상" : 3
-}
-
-var prospEqual2num =  { //전망과 고용평등률의 비교기준이 같으므로 같이 쓴다.
-    "null" : 0,
-    "보통미만" : 1,
-    "보통이상" : 2,
-    "좋음" : 3,
-    "매우좋음" : 4
-}
-
-function jobSalery() {
-    var under2000 = 0;
-    var over2000 = 0;
-    var over3000 = 0;
-    var over4000 = 0;
-}
-
-function jobInfo(_job, _equal, _profession, _salery, _prospect, _summary, _similarJob) {
-    this.job = _job;
-    this.equal = _equal;
-    this.salery = _salery;
-    this.prospect = _prospect;
-    this.summary = _summary;
-    this.similarJob = _similarJob;
-}
-
-var curSalery = new jobSalery();
-var curJobInfo = [];
-var curPageHtml = [];
-var curItems = 0;
-var curPage = 0;
-var beforePageNum = 0;
-
-function makeJobAccordion() {//delete number of pages
-    for(i = 0; i < beforePageNum; i++) {
-        $("#page" + i).remove();
-    }
-
-    var numOfPages = Math.ceil(curJobInfo.length / 20);
-    beforePageNum = numOfPages;
-
-    for(i = 0; i < numOfPages; i++) {
-        var btn = '<button ' + 'class=' + 'ui-button' + "' id=page" + i + ' value=' + i + ' style="width":"120px">' + (i + 1) + ' Page</button>';
-        $("#pageBtns").append(btn);
-        $("#page" + i).button()
-            .click(changePage);
-    }
-
-    $("#accordion_job").find('h3').remove().end();
-    $("#accordion_job").find('div').remove().end();
-    $("#accordion_job").accordion("refresh");
-    $("#accordion_job").append(curPageHtml[curPage]);
-    $("#accordion_job").accordion("refresh");
-}
-
 function getProfession(data) {
     var $xml = $(data.responseText);
     xml_array.push($xml);
@@ -86,17 +13,17 @@ function getProfession(data) {
         }
     });
 
-    var newDiv = "";
+    var newDiv = "<div id='selJobFamBox'> <ul class='list_jobFam'>";
     job_families_set.forEach(function(item) {
-        newDiv += '<h3>' + item + '</h3><div>' + '<input type="checkbox" class="jobFam" value="' + item + '">check</div>';
+        newDiv += '<li><input type="checkbox" class="chk_jobFam" value="' + item + '"> ' + item + "</li>";
     });
+    newDiv += "</ul><button name='nextBtn_job' class='nextBtn' id='nextBtn_job'>Next</button></div>";
 
     //refresh accordion
-    $("#accordion_jobFam").find('h3').remove().end();
-    $("#accordion_jobFam").find('div').remove().end();
-    $("#accordion_jobFam").accordion("refresh");
-    $("#accordion_jobFam").append(newDiv);
-    $("#accordion_jobFam").accordion("refresh");
+    $("#selJobFamBox").remove();
+    $("#jobFamContent fieldset").append(newDiv);
+    $("#nextBtn_job").button()
+        .click(downloadJob);
 }
 
 var downloadJobFam = function() {
@@ -109,8 +36,6 @@ var downloadJobFam = function() {
 
     //reset job_familes set and remove all accordion_jobFam
     job_families_set.clear();
-    $("#accordion_jobFam").find('h3').remove().end();
-    $("#accordion_jobFam").find('div').remove().end();
 
     //가져온 특성들로 직군들을 가져온다.
     pgubn_array.forEach(function(item) {
@@ -143,12 +68,32 @@ var downloadJobFam = function() {
     return false;
 }
 
+function appendJobLabel() {//delete number of pages
+    for(i = 0; i < beforePageNum; i++) {
+        $("#page" + i).remove();
+    }
+
+    var numOfPages = Math.ceil(curJobInfo.length / jobPerPage);
+    beforePageNum = numOfPages;
+
+    for(i = 0; i < numOfPages; i++) {
+        var btn = '<button ' + 'class=' + 'ui-button' + "' id=page" + i + ' value=' + i + ' style="width":"120px">' + (i + 1) + ' Page</button>';
+        $("#pageBtns").append(btn);
+        $("#page" + i).button()
+            .click(changePage);
+    }
+
+    $(".ul_jobs").remove().end();
+    $("#jobs").append(curPageHtml[curPage]);
+    $(".jobList").click(showDetails);
+}
+
 var getJob = function(data) {
     //get checked job families
     var job_array = [];
     job_array.splice(0, job_array.length);
-    $("#accordion_jobFam :checked").each(function(i, item) {
-        var val = $(this).parent().children(".jobFam").val();
+    $("#selJobFamBox :checked").each(function(i, item) {
+        var val = $(this).parent().children(".chk_jobFam").val();
         job_array.push(val);
     });
 
@@ -187,24 +132,9 @@ var getJob = function(data) {
         });
     });
     var howtoSort = $("#sort").val();
-    sortJobNMakeDiv(howtoSort);
+    sortJobNMakeLabel(howtoSort);
 
-    makeJobAccordion();
-
-    //for salery graph
-    //var dataset = [];
-    //dataset.push(curSalery.under2000); dataset.push(curSalery.over2000);
-    //dataset.push(curSalery.over3000); dataset.push(curSalery.over4000);
-    //d3.select("#graphSalery").selectAll("div")
-    //    .data(dataset)
-    //    .enter()
-    //    .append("div")
-    //    .attr("class", "bar")
-    //    .style("height", function(d) {
-    //        return d + "px";
-    //    });
-
-    alert("complete!");
+    appendJobLabel();
 }
 
 var downloadJob = function() {
@@ -233,7 +163,7 @@ var downloadJob = function() {
     return false;
 }
 
-function sortJobNMakeDiv(howtoSort) {
+function sortJobNMakeLabel(howtoSort) {
     if(howtoSort == "직업 이름") {
         curJobInfo.sort(function(a, b) {
             return a.job < b.job ? -1 : a.job > b.job ? 1 : 0;
@@ -260,32 +190,59 @@ function sortJobNMakeDiv(howtoSort) {
 
     //devide job by page
     var numOfJob = 0; var page = 0;
-    var jobDiv = "";    //accordion div
+    var jobDiv = "<div class='ul_jobs'><ul>";
     curJobInfo.forEach(function(item) {
-        jobDiv += '<h3>' + item.job + '</h3><div>' + '<p>직업 설명</br>' + item.summary + '</p>';
-        jobDiv +=  '<p>전망 : ' + item.prospect +'</p>';
-        jobDiv +=  '<p>연봉 : ' + item.salery +'</p>';
-        jobDiv +=  '<p>고용평등률 : ' + item.equal +'</p>';
-        jobDiv +=  '<p>비슷한 직업 : ' + item.similarJob +'</p></div>';
+        jobDiv += "<li class='jobList' value='" + item.job + "'>" + item.job + "</li>";
         numOfJob += 1;
-        if( (numOfJob + 12)%12 == 0 ) {
+        if( (numOfJob + jobPerPage)%jobPerPage == 0 ) {
+            jobDiv += "</ul></div>";
             curPageHtml[page] = jobDiv;
-            jobDiv = "";
+            jobDiv = "<div class='ul_jobs'><ul>";
             page += 1;
         }
     });
-    curPageHtml[page] = jobDiv; //insert last accordion
+    curPageHtml[page] = jobDiv; //insert rest jobs
+    jobDiv += "</ul></div>"
+}
+
+function showDetails() {
+    $("#dialog").remove();
+    var selectedJob = $(this).attr("value");
+    var dialogDiv = "<div id='dialog' title=" + selectedJob + ">";
+    curJobInfo.forEach(function(item) {
+        //alert( item.job + " " + $(this).attr("value") );
+        if( item.job == selectedJob ) {
+            dialogDiv += '<p>직업 설명</br>' + item.summary + '</p>'
+            dialogDiv += '<p>전망 : ' + item.prospect +'</p>';
+            dialogDiv += '<p>연봉 : ' + item.salery +'</p>';
+            dialogDiv += '<p>고용평등률 : ' + item.equal +'</p>';
+            dialogDiv += '<p>비슷한 직업 : ' + item.similarJob +'</p>';
+            return true;
+        }
+        return false;
+    });
+    dialogDiv += "</div>"
+    $('body').append(dialogDiv);
+    $("#dialog").dialog({
+        width: 900,
+        height: 600,
+        autoOpen: false,
+        resizable: false,
+        draggable: false,
+        position:{my:"center", at:"center", of:$(this).parent()}
+    });
+    $("#dialog").dialog("open");
 }
 
 var changeSort = function() {
     var howtoSort = $("#sort").val();
-    sortJobNMakeDiv(howtoSort);
-    makeJobAccordion();
+    sortJobNMakeLabel(howtoSort);
+    appendJobLabel();
 }
 
 function changePage() {
     curPage = $(this).val();
-    makeJobAccordion();
+    appendJobLabel();
 }
 
 function changeAbilChk() {
@@ -318,27 +275,3 @@ function reset() {
     $("#accordion_job").find('div').remove().end();
     $("#accordion_job").accordion("refresh");
 }
-
-$(function() {
-    $(".accordion").accordion();
-    $("#nextBtn_abil").button()
-        .click(downloadJobFam);
-    $("#nextBtn_job").button()
-        .click(downloadJob);
-
-    $("#selectAll").button();
-    $("#selectAllChk").button();
-
-    $("#sort").selectmenu({
-        change: changeSort
-    });
-    $("#jobSortBtn").button();
-    $("#salerySortBtn").button();
-    $(".pageButton").button();
-    $("#resetBtn").button()
-        .click(reset);
-
-    $(".abil").change(changeAbilChk);
-
-    jobSalery();
-});

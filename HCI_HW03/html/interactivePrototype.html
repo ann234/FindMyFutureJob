@@ -14,7 +14,9 @@
     <script type="text/javascript" src="../js/xml2json.js"></script>
     <script type="text/javascript" src="../js/jquery.xdomainajax.js"></script>
 
+    <script src="../js/global_variable.js"></script>
     <script src="../js/myjs01.js"></script>
+    <script src="../js/main.js"></script>
 
     <!--title-->
     <title>Find my future job</title>
@@ -29,6 +31,8 @@
 </div>
 
 <div class="contents">
+    <fieldset>
+        <legend><p class="p_remark">커리어넷 적성유형.</p></legend>
     <div class="accordion" id="accordion_abil">
         <h3 id="abil_100019">신체운동능력</h3>
         <div>
@@ -82,26 +86,23 @@
             <input type="checkbox" class="abil" value="100028">check
         </div>
     </div>
-    <p><div class="p_remark">커리어넷 적성유형.</div></p>
     <!--select all ability-->
     <!--goto next level-->
     <button name="nextBtn_abil" class="nextBtn" id="nextBtn_abil">Next</button>
+    </fieldset>
 </div>
 </br></br></br></br></br></br></br></br>
 
 <!--Choose job families-->
-<div class="header" id="jobFamContent">
+<div class="header">
     <label><h3><strong>Find my future job</strong></h3></label>
     <label><h2><strong>Choose what you want to do</strong></h2></label>
 </div>
-<!--accordion-->
-<div class="contents">
-    <div class="accordion" id="accordion_jobFam">
-    </div>
-    <!--check all checkbox-->
-    <p><div class="p_remark">한국표준직업분류(KSCO) 기준.</div></p>
-    <!--goto next level-->
-    <button name="nextBtn_job" class="nextBtn" id="nextBtn_job">Next</button>
+
+<div class="contents" id="jobFamContent">
+    <fieldset>
+        <legend><p class="p_remark">한국표준직업분류(KSCO) 기준.</p></legend>
+    </fieldset>
 </div>
 </br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
 
@@ -127,8 +128,6 @@
         <option>고용평등률</option>
     </select>
     <div id="jobs">
-        <div class="accordion" id="accordion_job">
-        </div>
     </div>
     <div id="pageBtns"></div>
     <button name="resetBtn" class="resetBtn" id="resetBtn">처음부터 다시</button>
