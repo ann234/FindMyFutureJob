@@ -1,0 +1,330 @@
+@import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
+@import url(http://fonts.googleapis.com/earlyaccess/nanummyeongjo.css);
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+
+.container {
+    width: 100%;
+    height: 100%;
+    margin-top: 70px;
+    background-color:#fff;
+}
+
+.header {
+    top:0%;
+    width:100%;
+    height:120px;
+    padding-top: 10px;
+    border:1px solid #E7E7E7
+}
+
+.contents {
+    float:left;
+    top:0%;
+    width:80%;
+    height:80%;
+    border:1px solid #E7E7E7
+}
+
+.contents article {
+    display: block;
+    width: 95%;
+
+    margin: 20px 10px;
+    padding: 10px 10px;
+
+    border-radius: 10px;
+
+    border:1px solid #E7E7E7
+}
+
+.contents header {
+    height: 30px;
+}
+
+.contents section {
+    display: block;
+    width: 97%;
+    height: auto;
+    overflow: auto;
+
+    margin-left: 15px;
+    <!--background-color:#D8D8D8;-->
+}
+
+.introduction {
+    list-style-position: outside;
+}
+
+.mainSubject li {
+    margin-top: 20px;
+    margin-bottom: 10px;
+
+    font-size: 16px;
+}
+
+aside {
+    float:left;
+    width:19%;
+    height:80%;
+    border:1px solid #E7E7E7;
+    text-align:center;
+}
+
+figure {
+    display: block;
+    float: left;
+
+    margin-top: 10px;
+    margin-right: 200px;
+
+    width: 80%;
+    height: 100%;
+}
+
+figcaption {
+    margin-left: 5px; margin-bottom: 5px;
+    font-size: 15px;
+    font-family: 'Jeju Gothic', serif;
+    text-align: left;
+}
+
+img {
+    padding: 5px;
+    margin-bottom: 5px;
+    border: 2px solid lightgreen;
+    border-radius: 10px;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+table {
+    width: 95%;
+    margin: 10px 10px 0 10px;
+}
+
+th {
+    width: 25%;
+    font-size: 18px;
+}
+
+td {
+    font-size: 14px;
+}
+
+input {
+    margin-left: 25px;
+}
+
+footer {
+    clear:both;
+    top:0%;
+    width:100%;
+    height:10%;
+    border:1px solid #E7E7E7;
+    text-align:center;
+}
+
+#info {
+    text-align:center;
+}
+
+.link{
+    float:left;
+    background:skyblue;
+    width:100%;
+    height:80px;
+}
+
+#hwLink {
+    height:80px;
+    margin-top: -70px;
+}
+
+#contentsLink {
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+}
+
+.link ul{
+    list-style: none;
+}
+
+#hwLink ul li {
+    display:inline;
+    float:left;
+    font-size:15px;
+    width: 25%;
+}
+
+#contentsLink ul li {
+    display:inline;
+    float:left;
+    font-size:20px;
+    width: 33%;
+}
+
+.link a, .link a:visited {
+    padding: 10px;
+    padding-left: 50px;
+    display: block;
+    color:#fff;             /* 글자색 흰색 */
+    width: 150px;           /* 너비 150px */
+    text-decoration: none;  /* 밑줄 없음 */
+}
+
+.link a:hover,  .link a:focus {
+    text-shadow:0px 2px 2px #000;   /* 글자에 검은색 그림자 */
+    color:#FC0;   /* 글자가 노랑 계열로 */
+}
+
+h1 {
+    font-family: 'Jeju Gothic', serif;
+    font-size: 30px;
+    font-weight: bold;
+    color: black;
+}
+
+h2 {
+    font-family: 'Nanum Myeongjo', serif;
+    font-size: 26px;
+    font-weight: bold;
+    color: black;
+}
+
+h3 {
+    font-family: 'Nanum Myeongjo', serif;
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+}
+
+h4 {
+    font-family: 'Nanum Myeongjo', serif;
+    font-size: 22px;
+    font-weight: bold;
+    color: black;
+}
+
+h5 {
+    font-family: 'Nanum Myeongjo', serif;
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+}
+
+ul li {
+    font-family: 'Nanum Myeongjo', serif;
+    font-size: 18px;
+    font-weight: normal;
+    color: black;
+}
+
+p
+{
+    font-family: 'Nanum Myeongjo', serif;
+    font-size: 16px;
+    font-weight: normal;
+    color: black;
+}
+
+a {
+    font-family: 'Hanna', sans-serif;
+}
+
+ol h2 {
+    margin-top: 40px;
+}
+
+/*for d3 graph*/
+#graph {
+    font: 12px sans-serif;
+}
+
+.y.axisRight text {
+    fill: orange;
+}
+
+.y.axisLeft text {
+    fill: steelblue;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+}
+
+.bar1 {
+    fill: steelblue;
+}
+
+.bar2 {
+    fill: orange;
+}
+
+.x.axis path {
+    display: none;
+}
+
+#canvas {
+    width: 100%; height: auto;
+    margin: 0px 20px;
+    background-color: white;
+    -webkit-box-shadow: 4px 4px 8px rgba(0,0,0,0.5);
+    -moz-box-shadow: 4px 4px 8px rgba(0,0,0,0.5);
+    box-shadow: 4px 4px 8px rgba(0,0,0,0.5);
+}
+
+@media screen and (max-width:1060px) {
+    .header {
+        top:0%;
+        width:1060px;
+        height:120px;
+        border:1px solid #E7E7E7
+    }
+    aside{
+        float:left;
+        width:1060px;
+        height:auto;
+        border:1px solid #E7E7E7;
+        text-align:center;
+    }
+
+    aside img {
+        float: left;
+        width: 30%; height: auto;
+    }
+
+    footer {
+        width:1060px;
+    }
+
+    .link{
+        float:left;
+        background:skyblue;
+        width:1060px;
+        height:80px;
+    }
+
+    #hwLink {
+        height:80px;
+        margin-top: -70px;
+    }
+
+    #contentsLink {
+        position: fixed;
+        left: 0px;
+        bottom: 0px;
+    }
+
+    .contents{
+        float:left;
+        width:1060px;
+        height:80%;
+    }
+}
