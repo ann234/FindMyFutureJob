@@ -77,20 +77,33 @@ function jobInfo(_job, _equal, _profession, _salery, _prospect, _summary, _simil
 /*Spinning progress*/
 var spinner = null;
 function startSpinner() {
+    //var opts = defaults;
     var opts = {
-        lines: 12, // The number of lines to draw
-        length: 10, // The length of each line
-        width: 4, // The line thickness
-        radius: 10, // The radius of the inner circle
-        color: '#000', // #rgb or #rrggbb
-        speed: 1, // Rounds per second
-        trail: 60, // Afterglow percentage
-        shadow: false// Whether to render a shadow
+        lines: 12,
+        length: 7,
+        width: 5,
+        radius: 10,
+        scale: 1.0,
+        corners: 1,
+        color: '#000',
+        fadeColor: 'transparent',
+        opacity: 0.25,
+        rotate: 0,
+        direction: 1,
+        speed: 1,
+        trail: 100,
+        fps: 20,
+        zIndex: 2e9,
+        className: 'spinner',
+        top: '50%',
+        left: '50%',
+        shadow: 'none',
+        position: 'absolute',
     };
 
     var target = document.getElementById('pt-main');
     if (spinner == null) {
-        spinner = new Spinner(opts).spin(target);
+        //spinner = new Spinner(opts).spin(target);
     }
 }
 
